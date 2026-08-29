@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600;700&display=swap');
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'IBM Plex Serif', Georgia, serif;
+}
+
+main {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+    padding-top: 12rem;
+    box-sizing: border-box;
+}
+
+.side-info {
+    width: min(90%, 800px);
+}
+
+.info-content {
+    margin-bottom: 4rem;
+}
+
+.name {
+    margin: 0;
+    font-size: 4rem;
+}
+
+.typing {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 3px solid currentColor;
+    width: 0;
+    animation:
+        typing 2.5s steps(14, end) forwards,
+        cursor 0.75s step-end infinite;
+}
+
+.title {
+    margin-top: 0.75rem;
+    font-size: 1.5rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.social-links a {
+    color: #111;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    color: #0a66c2;
+    transform: translateY(-2px);
+}
+
+.social-links a:focus-visible {
+    outline: 2px solid #0a66c2;
+    outline-offset: 4px;
+}
+
+.social-links svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 14ch;
+    }
+}
+
+@keyframes cursor {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .typing {
+        width: auto;
+        animation: none;
+        border-right: 0;
+    }
+}
+
+.section-title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.me {
+    margin-top: 2.5rem;
+}
