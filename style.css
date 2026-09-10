@@ -1,112 +1,182 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;600;700&display=swap');
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    font-family: 'IBM Plex Serif', Georgia, serif;
+:root {
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  color: #111;
+  background: #fff;
+  scroll-behavior: smooth;
 }
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 10;
+  width: 11rem;
+  padding: 2.5rem 1.75rem;
+  border-right: 1px solid #dedbd5;
+  background: rgba(255, 255, 255, 0.96);
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.sidebar-name {
+  color: #111;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sidebar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 1.4rem;
+}
+
+.sidebar nav a {
+  color: #595959;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a:focus-visible { color: #0a66c2; }
 
 main {
-    min-height: 100vh;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    text-align: center;
-    padding-top: 12rem;
-    box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
-.side-info {
-    width: min(90%, 800px);
-}
+.content { width: min(90%, 800px); }
 
-.info-content {
-    margin-bottom: 4rem;
+.intro {
+  min-height: 100vh;
+  padding-top: 12rem;
 }
 
 .name {
-    margin: 0;
-    font-size: 4rem;
+  margin: 0;
+  font-size: clamp(2.8rem, 7vw, 4rem);
 }
 
 .typing {
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid currentColor;
-    width: 0;
-    animation:
-        typing 2.5s steps(14, end) forwards,
-        cursor 0.75s step-end infinite;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid currentColor;
+  width: 0;
+  animation: typing 2.5s steps(14, end) forwards, cursor 0.75s step-end infinite;
 }
 
 .title {
-    margin-top: 0.75rem;
-    font-size: 1.5rem;
+  margin-top: 0.75rem;
+  font-size: 1.5rem;
 }
 
 .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.25rem;
-    margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .social-links a {
-    color: #111;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2rem;
-    height: 2rem;
-    transition: color 0.2s ease, transform 0.2s ease;
+  color: #111;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .social-links a:hover {
-    color: #0a66c2;
-    transform: translateY(-2px);
+  color: #0a66c2;
+  transform: translateY(-2px);
 }
 
-.social-links a:focus-visible {
-    outline: 2px solid #0a66c2;
-    outline-offset: 4px;
+.social-links a:focus-visible,
+.sidebar a:focus-visible {
+  outline: 2px solid #0a66c2;
+  outline-offset: 4px;
 }
 
 .social-links svg {
-    width: 100%;
-    height: 100%;
-    fill: currentColor;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
 }
 
-@keyframes typing {
-    from {
-        width: 0;
-    }
+section {
+  min-height: 75vh;
+  padding: 6rem 1rem;
+  scroll-margin-top: 2rem;
+}
 
-    to {
-        width: 14ch;
-    }
+section h2 {
+  margin: 0 0 1rem;
+  font-size: 2rem;
+}
+
+.placeholder { color: #6a6a6a; }
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 14ch; }
 }
 
 @keyframes cursor {
-    50% {
-        border-color: transparent;
-    }
+  50% { border-color: transparent; }
+}
+
+@media (max-width: 700px) {
+  .sidebar {
+    inset: 0 0 auto;
+    width: 100%;
+    height: auto;
+    padding: 1rem 1.25rem;
+    border-right: 0;
+    border-bottom: 1px solid #dedbd5;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .sidebar ul {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .sidebar nav a { font-size: 0.82rem; }
+  .intro { padding-top: 10rem; }
+  section { scroll-margin-top: 4rem; }
+}
+
+@media (max-width: 430px) {
+  .sidebar-name { display: none; }
+  .sidebar { justify-content: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .typing {
-        width: auto;
-        animation: none;
-        border-right: 0;
-    }
-}
+  :root { scroll-behavior: auto; }
 
-.section-title {
-    font-size: 2rem;
-    margin: 0;
-}
-
-.me {
-    margin-top: 2.5rem;
+  .typing {
+    width: auto;
+    animation: none;
+    border-right: 0;
+  }
 }
